@@ -1,8 +1,15 @@
+// src/components/CartView.jsx
+
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'; // Importing the named export 'useCart' from Cart.jsx
 import Footer from '../components/Footer';
 
-const CartView = ({ cartItems, removeItemFromCart, updateItemQuantity }) => {
+const CartView = ({ cartItems, removeItemFromCart, updateItemQuantity, clearCart }) => {
+  const handleOrderConfirmation = () => {
+    // Clear the cart after the order is placed
+    clearCart();
+  };
+
   return (
     <div className="p-4">
       <h2 className="text-2xl mb-4">Cart</h2>
@@ -37,12 +44,12 @@ const CartView = ({ cartItems, removeItemFromCart, updateItemQuantity }) => {
       </div>
       {cartItems.length > 0 && (
         <Link to="/confirm-order">
-          <button className="bg-green-500 text-white p-2 mt-4">
+          <button onClick={handleOrderConfirmation} className="bg-green-500 text-white p-2 mt-4">
             Confirm Order
           </button>
         </Link>
       )}
-    
+
     </div>
   );
 };

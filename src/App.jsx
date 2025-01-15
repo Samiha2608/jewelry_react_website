@@ -19,16 +19,32 @@ const App = () => {
     <>
       <Navbar cartItemCount={cart.cartItems.length} />
       <Routes>
-        <Route path="/" element={<ClutchBag addItemToCart={cart.addItemToCart} />} />
-        <Route path="/ethnic-jewelry" element={<EthnicJewelry addItemToCart={cart.addItemToCart} />} />
-        <Route path="/jewelry" element={<Jewelry addItemToCart={cart.addItemToCart} />} />
-        <Route path="/cart" element={<CartView cartItems={cart.cartItems} removeItemFromCart={cart.removeItemFromCart} updateItemQuantity={cart.updateItemQuantity} />} />
-        <Route path="/confirm-order" element={<ConfirmOrder cartItems={cart.cartItems} clearCart={cart.clearCart} />} />
-        <Route path="/order-summary" element={<OrderSummary />} />
-        <Route path="/item/:id" element={<ViewItem addItemToCart={cart.addItemToCart} />} />
-        <Route path="/message" element={<Message />} />
-        <Route path="/footer" element={<Footer />} />
-      </Routes>
+  <Route path="/" element={<ClutchBag addItemToCart={cart.addItemToCart} />} />
+  <Route path="/ethnic-jewelry" element={<EthnicJewelry addItemToCart={cart.addItemToCart} />} />
+  <Route path="/jewelry" element={<Jewelry addItemToCart={cart.addItemToCart} />} />
+  <Route
+    path="/cart"
+    element={
+      <CartView
+        cartItems={cart.cartItems}
+        removeItemFromCart={cart.removeItemFromCart}
+        updateItemQuantity={cart.updateItemQuantity}
+      />
+    }
+  />
+  <Route path="/confirm-order" element={<ConfirmOrder cartItems={cart.cartItems} />} />
+  <Route path="/order-summary" element={<OrderSummary />} />
+  <Route
+    path="/item/:id"
+    element={<ViewItem addItemToCart={cart.addItemToCart} />}
+  />
+  <Route
+    path="/message"
+    element={<Message clearCart={cart.clearCart} />} // Clear cart only in Message
+  />
+</Routes>
+
+
     </>
   );
 };

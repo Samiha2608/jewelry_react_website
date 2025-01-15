@@ -1,5 +1,7 @@
+// src/components/Cart.jsx
 import { useState } from 'react';
 
+// Change the named export to default export
 const useCart = () => {
   const [cartItems, setCartItems] = useState([]);
 
@@ -42,4 +44,4 @@ const useCart = () => {
   };
 };
 
-export default useCart;
+export default useCart;  // <-- Default export
